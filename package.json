@@ -1,0 +1,14 @@
+{
+  "name": "hotel-room-booking",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hotel Room Booking and Registration Web Application",
+  "scripts": {
+    "dev": "npm --prefix combined-experiments run dev",
+    "build": "npm --prefix combined-experiments run build",
+    "preview": "npm --prefix combined-experiments run preview",
+    "test": "npm --prefix combined-experiments test",
+    "test:watch": "npm --prefix combined-experiments run test:watch",
+    "test:coverage": "npm --prefix combined-experiments run test:coverage"
+  }
+}
