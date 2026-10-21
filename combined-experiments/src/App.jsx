@@ -42,11 +42,17 @@ export default function App() {
     logActivity("SYSTEM", "LuxeStay Hotel Registration App Initialized & Ready");
   }, []);
 
+  // Dynamically resolve router basename:
+  // Detects GitHub Pages repository subfolder (/LuxeStay) while defaulting to "/" on Vercel, Netlify & local dev
+  const baseName = typeof window !== "undefined" && window.location.pathname.startsWith("/LuxeStay")
+    ? "/LuxeStay"
+    : "/";
+
   return (
     <ErrorBoundary>
       <AuthProvider>
         <BookingProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={baseName}>
             <RouteLogger />
             <div className="app-shell">
               <PwaManager />

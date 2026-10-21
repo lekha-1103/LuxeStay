@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm --prefix combined-experiments run dev",
     "build": "npm --prefix combined-experiments run build",
+    "build:gh": "npm --prefix combined-experiments run build:gh",
     "preview": "npm --prefix combined-experiments run preview",
     "test": "npm --prefix combined-experiments test",
     "test:watch": "npm --prefix combined-experiments run test:watch",

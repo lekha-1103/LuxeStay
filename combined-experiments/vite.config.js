@@ -366,7 +366,11 @@ function apiMockPlugin() {
   };
 }
 
+const isGhPages = process.env.GITHUB_PAGES === "true" || process.env.VITE_PLATFORM === "github-pages";
+const basePath = process.env.VITE_BASE_PATH || (isGhPages ? "/LuxeStay/" : "/");
+
 export default defineConfig({
+  base: basePath,
   server: { port: 5176 },
   plugins: [
     react(),
@@ -382,8 +386,8 @@ export default defineConfig({
         theme_color: '#1e293b',
         background_color: '#f8fafc',
         display: 'standalone',
-        start_url: '/',
-        scope: '/',
+        start_url: basePath,
+        scope: basePath,
         orientation: 'portrait-primary',
         icons: [
           {
