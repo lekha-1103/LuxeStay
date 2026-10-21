@@ -70,3 +70,50 @@ Or navigate to `combined-experiments`:
 ```bash
 cd combined-experiments && npm run dev
 ```
+
+---
+
+## Experiment 3: Deploy Hotel Booking Application
+**Topics:** Netlify, Vercel, GitHub Pages
+
+### a) Create the Production Build
+```bash
+# Standard Production Build (for Netlify & Vercel)
+npm run build
+
+# GitHub Pages Production Build (with repository subfolder base /LuxeStay/)
+npm run build:gh
+```
+Output directory: `combined-experiments/dist/`
+
+### b) Deploy on GitHub Pages
+- **Live Branch:** `gh-pages` (containing built static assets)
+- **CI/CD:** Automated via `.github/workflows/deploy.yml`
+- **SPA Routing:** Supported with `public/404.html` redirection trick and query decoder in `index.html`.
+- **Live URL:** [https://lekha-1103.github.io/LuxeStay/](https://lekha-1103.github.io/LuxeStay/)
+
+### c) Deploy on Netlify
+- **Configuration:** `netlify.toml` with `base = "combined-experiments"` and `publish = "dist"`.
+- **SPA Routing:** Configured via `public/_redirects` (`/*  /index.html  200`).
+- **Dashboard Import:** Connect `lekha-1103/LuxeStay` on Netlify for automatic continuous deployment.
+
+### d) Deploy on Vercel
+- **Configuration:** `vercel.json` with build command, output directory, and rewrite rules.
+- **Dashboard Import:** Connect `lekha-1103/LuxeStay` on Vercel for zero-config automatic continuous deployment.
+
+### e) Verify Functionality
+All test suites pass (25/25 tests passed):
+```bash
+npm test
+```
+Tested features: Hotel browsing, search & filters, multi-step booking, billing calculation, checkout, registration slip, and PWA offline support.
+
+### f) Deployment Comparison
+| Criteria | GitHub Pages | Netlify | Vercel |
+| :--- | :--- | :--- | :--- |
+| **Hosting Model** | Static repository hosting | Global Edge CDN | Global Edge CDN |
+| **SPA Routing** | `404.html` redirect trick | Native 200 rewrite (`_redirects`) | Native rewrite (`vercel.json`) |
+| **Base URL** | `/LuxeStay/` subfolder | Root domain (`/`) | Root domain (`/`) |
+| **Deploy Previews** | Manual | Automatic on PRs | Automatic on PRs |
+| **Build Time** | ~1m 30s (Actions) | ~35s | ~30s |
+
